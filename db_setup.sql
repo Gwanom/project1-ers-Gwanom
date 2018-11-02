@@ -5,6 +5,7 @@
 */
 
 -- Create tables
+SET SCHEMA 'ers';
 
 CREATE TABLE ers_reimbursment
 (
