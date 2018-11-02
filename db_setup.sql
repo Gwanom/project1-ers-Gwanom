@@ -8,7 +8,7 @@
 
 CREATE TABLE ers_reimbursment
 (
-    reimb_id NUMBER NOT NULL, --SERIAL?
+    reimb_id SERIAL,
     reimb_amt NUMBER NOT NULL,
     reimb_submitted TIMESTAMP NOT NULL,
     reimb_resolved TIMESTAMP,
@@ -23,7 +23,7 @@ CREATE TABLE ers_reimbursment
 
 CREATE TABLE ers_users
 (
-    ers_users_id NUMBER NOT NULL, --SERIAL?
+    ers_users_id SERIAL,
     ers_username VARCHAR2(50) NOT NULL,
     ers_password VARCHAR2(50) NOT NULL,
     user_first_name VARCHAR2(100) NOT NULL,
@@ -36,21 +36,21 @@ CREATE TABLE ers_users
 
 CREATE TABLE ers_reimbursment_status
 (
-    reimb_status_id NUMBER NOT NULL, --SERIAL?
+    reimb_status_id SERIAL,
     reimb_status  VARCHAR2(10) NOT NULL,
     CONSTRAINT reimb_status_PK PRIMARY KEY (reimb_status_id)
 );
 
 CREATE TABLE ers_reimbursment_type
 (
-    reimb_type_id NUMBER NOT NULL, --SERIAL?
+    reimb_type_id SERIAL,
     reimb_type VARCHAR2(10) NOT NULL,
     CONSTRAINT reimb_type_PK PRIMARY KEY (reimb_type_id)
 );
 
 CREATE TABLE ers_user_roles
 (
-    ers_user_role_id NUMBER NOT NULL, --SERIAL?
+    ers_user_role_id SERIAL,
     user_role VARCHAR2(10) NOT NULL
     CONSTRAINT ers_user_roles_PK PRIMARY KEY (ers_user_role_id)
 );
