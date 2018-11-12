@@ -1,6 +1,7 @@
-# project1-ers-Gwanom
+# Project 1
+## Expense Reimbursement System - Full Stack Web Application 
 
-## API endpoints
+### API endpoints
 - **/reimbs**
   - GET: all reimbursement requests
   - POST: add a new request
