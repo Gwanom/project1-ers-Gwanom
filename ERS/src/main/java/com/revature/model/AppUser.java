@@ -7,10 +7,14 @@ public class AppUser {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private UserRole role;
+	private String role;
+	
+	public AppUser() {
+		super();
+	}
 	
 	public AppUser(int userId, String username, String password, String firstName, String lastName, String email,
-			UserRole role) {
+			String role) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -69,17 +73,17 @@ public class AppUser {
 		this.email = email;
 	}
 
-	public UserRole getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(UserRole role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
 	@Override
 	public String toString() {
 		return "AppUser [userId=" + userId + ", username=" + username + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + ", email=" + email + ", roleId=" + role + "]";
+				+ firstName + ", lastName=" + lastName + ", email=" + email + ", role=" + role + "]";
 	}
 }
