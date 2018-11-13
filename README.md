@@ -36,9 +36,9 @@ any successful request should return status code 200
 if the resource is not found, return 404
 
 **POST:**
-if new resource is successfully created, return 201
+if new resource is successfully created, return 201 and the new resource
 if invalid data in request, return 400
 
-**DELETE:**
-if resource is successfully deleted, return 204
-if resource doesn’t exist, return 422
+**PUT:**
+if a resource is updated, return 200 and the updated resource
+if the resource isn't found, return 422
