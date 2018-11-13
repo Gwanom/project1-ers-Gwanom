@@ -1,20 +1,30 @@
 package com.revature.model;
 
+import java.sql.Timestamp;
+
 public class Reimbursement {
 	
 	private int reimbursementId;
 	private double reimbursementAmount;
+	private Timestamp submitted;
+	private Timestamp resolved;
 	private String description;
 	private int authorUserId;
 	private int resolverUserId;
 	private int statusId;
 	private int reimbursementTypeId;
 	
-	public Reimbursement(int reimbursementId, double reimbursementAmount, String description, int authorUserId,
-			int resolverUserId, int statusId, int reimbursementTypeId) {
+	public Reimbursement(){
+		super();
+	}
+	
+	public Reimbursement(int reimbursementId, double reimbursementAmount, Timestamp submitted, Timestamp resolved,
+			String description, int authorUserId, int resolverUserId, int statusId, int reimbursementTypeId) {
 		super();
 		this.reimbursementId = reimbursementId;
 		this.reimbursementAmount = reimbursementAmount;
+		this.submitted = submitted;
+		this.resolved = resolved;
 		this.description = description;
 		this.authorUserId = authorUserId;
 		this.resolverUserId = resolverUserId;
@@ -34,6 +44,23 @@ public class Reimbursement {
 	public void setReimbursementAmount(double reimbursementAmount) {
 		this.reimbursementAmount = reimbursementAmount;
 	}
+		
+	public Timestamp getSubmitted() {
+		return submitted;
+	}
+
+	public void setSubmitted(Timestamp submitted) {
+		this.submitted = submitted;
+	}
+
+	public Timestamp getResolved() {
+		return resolved;
+	}
+
+	public void setResolved(Timestamp resolved) {
+		this.resolved = resolved;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -64,11 +91,14 @@ public class Reimbursement {
 	public void setReimbursementTypeId(int reimbursementTypeId) {
 		this.reimbursementTypeId = reimbursementTypeId;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Reimbursement [reimbursementId=" + reimbursementId + ", reimbursementAmount=" + reimbursementAmount
-				+ ", description=" + description + ", authorUserId=" + authorUserId + ", resolverUserId="
-				+ resolverUserId + ", statusId=" + statusId + ", reimbursementTypeId=" + reimbursementTypeId + "]";
-	}	
+				+ ", submitted=" + submitted + ", resolved=" + resolved + ", description=" + description
+				+ ", authorUserId=" + authorUserId + ", resolverUserId=" + resolverUserId + ", statusId=" + statusId
+				+ ", reimbursementTypeId=" + reimbursementTypeId + "]";
+	}
+	
+		
 }
