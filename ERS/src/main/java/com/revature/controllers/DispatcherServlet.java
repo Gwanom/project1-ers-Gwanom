@@ -57,6 +57,8 @@ public class DispatcherServlet extends HttpServlet {
 			auc.process(req, resp);
 		} else if (uri.startsWith("reimbs")) {
 			rc.process(req, resp);
+		} else if (uri.startsWith("test")) {
+			resp.getWriter().write("test");
 		} else {
 			resp.setStatus(404);
 			return;
