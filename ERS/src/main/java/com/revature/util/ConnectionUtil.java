@@ -23,12 +23,12 @@ public class ConnectionUtil {
 		String username;
 		String password;
 		if ("USE_PROPERTY".equals(System.getProperty("USE_PROPERTY"))) {
-			url = System.getProperty("db_url");
-			port = System.getProperty("db_port");
-			dbName = System.getProperty("db_name");
-			dbSchema = System.getProperty("db_schema");
-			username = System.getProperty("db_username");
-			password = System.getProperty("db_password");
+			url = System.getProperty("DB_URL");
+			port = System.getProperty("DB_PORT");
+			dbName = System.getProperty("DB_NAME");
+			dbSchema = System.getProperty("DB_SCHEMA");
+			username = System.getProperty("DB_USERNAME");
+			password = System.getProperty("DB_PASSWORD");
 
 		} else {
 			url = System.getenv("db_url");
