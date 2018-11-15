@@ -25,8 +25,8 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	}
 
 	@Override
-	public int updateReimbursement(Reimbursement reim) {
-		return rd.updateReimbursement(reim);
+	public int updateReimbursement(int reimbId, int statusId) {
+		return rd.updateReimbursement(reimbId, statusId);
 	}
 
 }

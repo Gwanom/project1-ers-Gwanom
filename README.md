@@ -4,7 +4,6 @@
 ### API endpoints
 - **/reimbs**
   - GET: all reimbursement requests
-  - POST: add a new request
 
 - **/reimbs/1**
   - GET: reimbursement 1
@@ -15,17 +14,19 @@
   - GET: reimbursement requests with status 1
   - POST: error 405
 
-- **/users** -done
+- **/users** (done)
   - GET: all users (might not be used)
   - POST: add a new user
 
-- **/users/1** -done
+- **/users/1** (done)
   - GET: user with id 1
   - POST: error 405
 
-- **/users/1/reimbs**
+- **/users/1/reimbs** (done)
   - GET: reimbursement requests submitted by user 1
   - POST: create a new reimbursement request for user 1
+    - because a reimbursement mut have an associated author, adding new requests is only available
+      from this endpoint, instead of *POST*ing to e.g. /reimb/1
 
 
 if any post body does not contain JSON, return 415

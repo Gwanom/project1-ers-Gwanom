@@ -14,5 +14,5 @@ public interface ReimbursementService {
 	
 	List<Reimbursement> findAll();
 	
-	int updateReimbursement(Reimbursement reim);
+	int updateReimbursement(int reimbId, int statusId);
 }

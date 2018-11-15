@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dto.Credential;
 import com.revature.model.AppUser;
 import com.revature.model.Reimbursement;
 import com.revature.services.AppUserService;
@@ -57,20 +58,30 @@ public class AppUserController extends HttpServlet {
 		} else if (uriArray.length == 2) {
 //			/users/1
 //			get user with id 1
-			int id = Integer.parseInt(uriArray[1]);
-			log.info("retrieving user with id " + id);
-			AppUser targetUser = aus.findById(id);
-			ResponseMapper.convertAndAttach(targetUser, resp);
-			return;
+			try {
+				int id = Integer.parseInt(uriArray[1]);
+				log.info("retrieving user with id " + id);
+				AppUser targetUser = aus.findById(id);
+				ResponseMapper.convertAndAttach(targetUser, resp);
+				return;
+			} catch (NumberFormatException e) {
+				resp.setStatus(404);
+				return;
+			}
 		} else if (uriArray.length == 3) {
 //			/users/1/reimb
 //			get all reimbursement requests from user with id 1
 			if ("reimb".equals(uriArray[2])) {
-				int id = Integer.parseInt(uriArray[1]);
-				log.info("retrieving requests from user with id " + id);
-				List<Reimbursement> reimbs = aus.findReimbsByUser(id);
-				ResponseMapper.convertAndAttach(reimbs, resp);
-				return;
+				try {
+					int id = Integer.parseInt(uriArray[1]);
+					log.info("retrieving requests from user with id " + id);
+					List<Reimbursement> reimbs = aus.findReimbsByUser(id);
+					ResponseMapper.convertAndAttach(reimbs, resp);
+					return;
+				} catch (NumberFormatException e) {
+					resp.setStatus(404);
+					return;
+				}
 			} else {
 				resp.setStatus(404);
 				return;
@@ -98,9 +109,20 @@ public class AppUserController extends HttpServlet {
 			log.trace("with id: " + status);
 			return;
 		} else if (uriArray.length == 2) {
-//			/users/1
-//			this endpoint does not accept POST requests
-			resp.setStatus(405);
+//			/users/login
+			if ("users/login".equals(uri)) {
+				log.info("attempting to log in");
+				Credential cred = om.readValue(req.getReader(), Credential.class);
+				if (!aus.login(cred, req.getSession())) {
+					resp.setStatus(403);
+				} else {
+					log.trace("setting status 200");
+					resp.setStatus(200);
+				}
+			} else {
+				resp.setStatus(404);
+				return;
+			}
 			return;
 		} else if (uriArray.length == 3) {
 //			/users/1/reimb
